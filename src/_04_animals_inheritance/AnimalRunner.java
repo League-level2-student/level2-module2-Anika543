@@ -10,15 +10,9 @@ package _04_animals_inheritance;
 public class AnimalRunner {
 	public static void main(String[] args) {
 		Dog d = new Dog("Lucy", "brown", true);
-		d.printName();
-		d.play();
-		d.eat();
-		d.sleep();
+		d.setupAnimal(); 
 		
 		Cat c = new Cat("Tom", "black", false);
-		c.printName();
-		c.play();
-		c.eat();
-		c.sleep();
+		c.setupAnimal();
 	}
 }

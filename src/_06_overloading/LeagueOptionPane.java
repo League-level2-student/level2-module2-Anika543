@@ -1,11 +1,14 @@
 package _06_overloading;
 
+import java.awt.Color;
 import java.io.IOException;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -20,10 +23,22 @@ public class LeagueOptionPane {
 	public static void showMessageDialog(String message) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
-		
+		JFrame frame = new JFrame();
+		frame.setSize(400, 400);
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel(); 
+		panel.add(label); 
+		label.setIcon(loadImage("league.png")); 
+		label.setText(message);
+		frame.setTitle("Message");
+		frame.add(panel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.pack(); 
 		
 		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
-		//frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);
 	}
 	
 	// 3. Call this method in the Runner class
@@ -31,12 +46,72 @@ public class LeagueOptionPane {
 
 	// 4. Create another showMessageDialog() method that lets us also choose the Message and Title 
 	//    2 String parameters (one for the message and one for the title)
+	public static void showMessageDialog(String message, String title) {
+		JFrame frame = new JFrame();
+		frame.setSize(400, 400);
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel(); 
+		panel.add(label); 
+		label.setIcon(loadImage("league.png")); 
+		label.setText(message);
+		frame.setTitle(title);
+		frame.add(panel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.pack(); 
+		
+		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+		frame.setLocationRelativeTo(null);
+		
+	}
 	
 	// 5. Call this method in the Runner class
 	
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
+	public static JPanel showMessageDialog(String message, String title, String image) {
+		JFrame frame = new JFrame();
+		frame.setSize(400, 400);
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel(); 
+		panel.add(label); 
+		label.setIcon(loadImage(image)); 
+		label.setText(message);
+		frame.setTitle(title);
+		frame.add(panel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.pack(); 
+		
+		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+		frame.setLocationRelativeTo(null);
+		return panel; 
+		
+	}
+	
+	public static JPanel showMessageDialog(String message, String title, ImageIcon icon) {
+		JFrame frame = new JFrame();
+		frame.setSize(400, 400);
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel(); 
+		panel.add(label); 
+		label.setIcon(icon); 
+		label.setText(message);
+		frame.setTitle(title);
+		frame.add(panel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.pack(); 
+		
+		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+		frame.setLocationRelativeTo(null);
+		return panel; 
+		
+	}
 	
 	// 7. Call this method in the Runner class
 	
@@ -56,6 +131,18 @@ public class LeagueOptionPane {
 		//	5. Call this method in the Runner class
 		//
 		// WHY DID WE DO THIS? - because we were able to overload this method by calling one of the other methods inside of it
+	public static void showMessageDialog(String message, String title, String image, Color background) {
+		JPanel panel = showMessageDialog(message, title, image);
+		panel.setBackground(background); 
+		
+	}
+	public static void showMessageDialog(String message, String title, ImageIcon icon, Color background) {
+		JPanel panel = showMessageDialog(message, title, icon);
+		panel.setBackground(background); 
+		
+	}
+	
+	
 	
 	
 	public static ImageIcon loadImage(String fileName) {
